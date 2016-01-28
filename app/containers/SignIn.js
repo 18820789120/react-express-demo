@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from "react"
 
 import BackHeader from "../components/BackHeader"
+import {fetchUserInfo} from "../actions/SignInActions"
 
 const style = {
   display: "block"
@@ -20,20 +21,22 @@ export default class SignIn extends Component{
       userName: "patchen",
       password: "0000"
     }
-    $.ajax({
-      data:data,
-      type: "post",
-      url: "api/signin",
-      error: function(rep){
-        alert("ajax error\n"+JSON.stringify(rep));
-      },
-      success: function(rep){
-        console.log('000 success: ---', rep);
-        if(rep.isOk){
-          window.history.back();
-        }
-      }
-    })
+    console.log('clicksubmit',data);
+    fetchUserInfo(data)(function(resp){console.log("------>>>>>!!111");});
+    // $.ajax({
+    //   data:data,
+    //   type: "post",
+    //   url: "api/signin",
+    //   error: function(rep){
+    //     alert("ajax error\n"+JSON.stringify(rep));
+    //   },
+    //   success: function(rep){
+    //     console.log('000 success: ---', rep);
+    //     if(rep.isOk){
+    //       window.history.back();
+    //     }
+    //   }
+    // })
   }
 
   cancel(e){

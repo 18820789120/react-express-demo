@@ -23,7 +23,7 @@ module.exports = {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
       { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
-      { test: /\.(jpe?g|png|gif|svg|woff|eot|ttf)$/, loader: 'url?limit=10000&name=[sha512:hash:base64:7].[ext]' }
+      { test: /\.(jpe?g|png|gif|svg|woff|eot|ttf)$/, loader: 'url?limit=10000&name=assets/img/[sha512:hash:base64:7].[ext]' }
     ]
   },
   plugins:[
