@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from "react"
+import {connect} from "react-redux";
 
 import BackHeader from "../components/BackHeader"
 import {fetchUserInfo} from "../actions/SignInActions"
@@ -7,8 +8,14 @@ const style = {
   display: "block"
 }
 
-export default class SignIn extends Component{
+class SignIn extends Component{
 
+  constructor(props){
+    super(props);
+    console.log("=++++", this.props);
+    // console.log("9999", dispatch);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   nameChange(e){
     let target = e.target
   }
@@ -16,13 +23,15 @@ export default class SignIn extends Component{
 
   }
 
-  handleSubmit(e){
+  handleSubmit(){
+    const {dispatch} = this.props;
     let data = {
       userName: "patchen",
       password: "0000"
     }
-    console.log('clicksubmit',data);
-    fetchUserInfo(data)(function(resp){console.log("------>>>>>!!111");});
+    console.log('clicksubmit',data, dispatch);
+    dispatch(fetchUserInfo(data));
+    // fetchUserInfo(data)(function(resp){debugger; console.log("------>>>>>!!111",resp);});
     // $.ajax({
     //   data:data,
     //   type: "post",
@@ -44,6 +53,8 @@ export default class SignIn extends Component{
   }
 
   render(){
+    console.log("sign in render: ", this.props.user);
+    const {user} = this.props;
     return(
       <div className="page" style={style}>
         <BackHeader title="sign in" />
@@ -58,7 +69,7 @@ export default class SignIn extends Component{
                       姓名
                     </div>
                     <div className="item-input">
-                      <input type="text" placeholder="Your name" onChange={this.nameChange} />
+                      <input value={this.props.user.userId} type="text" placeholder="Your name" onChange={this.nameChange} />
                     </div>
                   </div>
                 </div>
@@ -69,7 +80,7 @@ export default class SignIn extends Component{
                   <div className="item-inner">
                     <div className="item-title label">密码</div>
                     <div className="item-input">
-                      <input type="password" placeholder="Password" className="" onChange={this.passwordChange} />
+                      <input value="{user.userId}" type="password" placeholder="Password" className="" onChange={this.passwordChange} />
                     </div>
                   </div>
                 </div>
@@ -87,3 +98,16 @@ export default class SignIn extends Component{
     );
   }
 }
+
+SignIn.propTypes = {
+  user: PropTypes.object,
+  dispatch: PropTypes.func
+}
+
+function mapStateToProps(state){
+  return {
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(SignIn)

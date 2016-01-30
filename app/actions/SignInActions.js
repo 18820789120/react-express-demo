@@ -1,6 +1,10 @@
+import {polyfill} from "es6-promise";
 import fetch from "isomorphic-fetch";
 
 export const USER_INFO = "SIGN_POST";
+export const RECEIVE_USER_INFO = "RECEIVE_USER_INFO";
+
+polyfill();
 
 export function requestPosts(userInfo){
   return{
@@ -9,12 +13,16 @@ export function requestPosts(userInfo){
   }
 }
 
-function receivePosts(resp){
-  console.log("resp:: receivePosts", resp);
+function receivePosts(json){
+  console.log("resp:: receivePosts", json);
+  return{
+    type:RECEIVE_USER_INFO,
+    json
+  }
 }
 // {userName:'patChen', password:"0000"}
 function makeSignRequest(data){
-  return fetch("http://10.0.2.15/mockjs/2/api/signin", {
+  return fetch("http://10.0.2.15/mockjs/2/api/testsignin", {
     method: "post",
     // headers:{
     //   "Accept": "application/json",
@@ -29,8 +37,13 @@ export function fetchUserInfo(userInfo){
     dispatch(requestPosts(userInfo))
     return makeSignRequest({userName:'patChen', password:"0000"})
       .then( response => {
-        console.log("=====>>>", response, response.json());
+        // console.log("=====>>>", response, response.json());
+        // debugger;
+        return response.json()
       })
-      .then(json=>dispatch(receivePosts(json)))
+      .then(json=>{
+        console.log("secount then: ===", json);
+        dispatch(receivePosts(json))
+      })
   }
 }
