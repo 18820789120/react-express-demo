@@ -52,8 +52,13 @@ class SignIn extends Component{
     window.history.back()
   }
 
+  componentDidUpdate(prevProps,prevState){
+    // super(prevProps, prevState);
+    console.log("========", prevProps, prevState);
+  }
+
   render(){
-    console.log("sign in render: ", this.props.user);
+    console.log("sign in render: ", this.props);
     const {user} = this.props;
     return(
       <div className="page" style={style}>

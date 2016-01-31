@@ -18,6 +18,7 @@
     "morgan": "~1.6.1",
     "node-sass-middleware": "0.8.0",
     "react": "^0.14.6",
+    "react-addons-css-transition-group": "^0.14.7",
     "react-dom": "^0.14.6",
     "react-redux": "^4.0.6",
     "react-router": "^1.0.3",
@@ -25,7 +26,8 @@
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.3",
     "serve-favicon": "~2.3.0",
-    "webpack": "^1.12.11"
+    "webpack": "^1.12.11",
+    "zepto-modules": "0.0.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.1",

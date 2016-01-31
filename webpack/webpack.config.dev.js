@@ -11,7 +11,7 @@ module.exports = {
   context: path.join(rootDir, "app"),
   entry:{
     app:"./app-dev",
-    lib: ["react", "react-dom", "react-router", "history"]
+    lib: ["react", "react-dom", "react-router", "history", "react-redux", "zepto-modules"]
     // vendors:['classnames', 'iso', 'react', 'react-dom', 'react-helmet', 'react-router', 'react-hot-loader']
   },
   output:{

@@ -10,12 +10,15 @@ const style = {
 
 class Index extends Component {
   render(){
+    console.log("index render:", this.props);
     return(
       <div className="page" style={style}>
         <BackHeader title="Application title" />
         <div className="content">
           <div>{this.props.header.title}</div>
           <Link to="/signin">sign in</Link>
+          <br></br>
+          <Link to="/projectlist">project list</Link>
         </div>
       </div>
     );
