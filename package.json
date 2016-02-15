@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "webpack --config webpack/webpack.config.dev.js | webpack-dev-server --port 8181 --config webpack/webpack.config.dev.js --hot --history-api-fallback --progress --colors --inline --content-base ./build",
-    "start": "node ./server"
+    "server": "webpack --config webpack/webpack.config.server.js",
+    "start": "node ./server/bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

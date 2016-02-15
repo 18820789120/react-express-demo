@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
-import $ from "zepto-modules"
-import sm from "../utils/scroller"
+// import $ from "zepto-modules"
+// import sm from "../utils/scroller"
 
 import BackHeader from "../components/BackHeader";
 import MediaList from "../components/MediaList";
@@ -25,13 +25,13 @@ class PropjectList extends Component{
   // 在生命周期中的这个时间点，组件拥有一个 DOM 展现，你可以通过 this.getDOMNode() 来获取相应 DOM 节点。
   componentDidMount(){
     // $(".content").scroller();
-    console.log("sm:", sm);
-    const scroll = sm($);
-    // scroll(type:"js")
-    $(".content").scroller({
-        type: 'native'
-    });
-    console.log("00000=====<<<", $.fn.scroller);
+    // console.log("sm:", sm);
+    // const scroll = sm($);
+    // // scroll(type:"js")
+    // $(".content").scroller({
+    //     type: 'native'
+    // });
+    // console.log("00000=====<<<", $.fn.scroller);
   }
 
   render(){

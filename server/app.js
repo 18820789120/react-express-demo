@@ -27,6 +27,7 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -62,5 +63,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+require('./routes/render-routes')(app);
+// console.log(require("./routes/render-routes"));
 module.exports = app;
